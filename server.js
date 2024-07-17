@@ -2,13 +2,13 @@ const express = require('express');
 const basicAuth = require('basic-auth');
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 8080;
 
 // Middleware for Basic Authentication
 const auth = (req, res, next) => {
   const user = basicAuth(req);
   const username = 'admin'; // Replace with your desired username
-  const password = 'admin'; // Replace with your desired password
+  const password = 'password'; // Replace with your desired password
 
   if (user && user.name === username && user.pass === password) {
     return next();
